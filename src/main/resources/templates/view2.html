@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View 2</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Shipping Address</h1>
+    <form
+      method="POST"
+      data-th-action="@{/checkout}"
+      data-th-object="${shippingAddress}"
+    >
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input
+              type="text"
+              placeholder="Your name"
+              data-th-field="*{name}"
+            />
+          </td>
+        </tr>
+        <tr data-th-if="${#fields.hasErrors('name')}">
+          <td></td>
+          <td data-th-errorclass="error" data-th-errors="*{name}"></td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>
+            <input
+              type="text"
+              placeholder="Your address"
+              data-th-field="*{address}"
+            />
+          </td>
+        </tr>
+        <tr data-th-if="${#fields.hasErrors('address')}">
+          <td></td>
+          <td data-th-errorclass="error" data-th-errors="*{address}"></td>
+        </tr>
+      </table>
+      <br />
+      <button type="submit" formmethod="GET" formaction="/">Back</button>
+      <button type="submit">Checkout</button>
+    </form>
+  </body>
+</html>

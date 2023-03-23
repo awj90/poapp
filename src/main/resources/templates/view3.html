@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View 3</title>
+  </head>
+  <body>
+    <h1>Invoice</h1>
+    <table data-th-if="${success}">
+      <tr>
+        <td>Invoice id:</td>
+        <td data-th-text="${id}"></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td data-th-text="${name}"></td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td data-th-text="${shippingAddress}"></td>
+      </tr>
+      <tr>
+        <td>Total: $</td>
+        <td
+          data-th-text="${#numbers.formatDecimal(totalCost,1,2,'DEFAULT')}"
+        ></td>
+      </tr>
+    </table>
+    <table data-th-unless="${success}">
+      <tr>
+        <td>Name:</td>
+        <td data-th-text="${name}"></td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td data-th-text="${shippingAddress}"></td>
+      </tr>
+      <tr>
+        <td>Error:</td>
+        <td data-th-text="${errorMessage}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
